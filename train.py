@@ -1,6 +1,6 @@
 import numpy as np
 from alexnet import alexnet
-from Preprocess import X, y
+
 WIDTH = 120
 HEIGHT = 120
 LR = 1e-3
