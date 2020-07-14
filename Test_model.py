@@ -16,7 +16,7 @@ WIDTH = 120
 HEIGHT = 120
 LR = 1e-3
 EPOCHS = 10
-MODEL_NAME = 'tekken-model/pygta5-car-fast-0.001-alexnetv2-10-epochs-300K-data.model'
+MODEL_NAME = 'tekken-model/TFTekken-0.001-alexnetv2-10-epochs-300K-data.model'
 
 t_time = 0.09
 
