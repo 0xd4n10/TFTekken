@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/dan/Documents/TFTekkan/model_alexnet-770"
+all_model_checkpoint_paths: "/home/dan/Documents/TFTekkan/model_alexnet-770"
