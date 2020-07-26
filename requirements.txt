@@ -1,7 +1,6 @@
-tensorflow==1.14.0
+tensorflow==2.2
 opencv==3.4.2
 numpy==1.18.5
-tflearn
 mss==6.0.0
-curses
+pynput
 
