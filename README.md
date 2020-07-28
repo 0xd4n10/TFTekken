@@ -11,6 +11,6 @@ be fully compatible with other linux distrobutions.
 2. Launch tekken in an 800 x 700 pixels window on the top left portion of your screen.
 3. Run Collect.py and start to play as soon as the count down finishes (frames with no keypresses aren't counted so when not fighting don't press any buttons!)
 4. Run Preprocessing.py 
-5. Run train.py or train-hpt.py for training with hyper-parameter tuning.
+5. Run train.py to train the model.
 6. Launch tekken with the same size and position as when collecting data.
 7. Run Test_model.py and ensure you are in a match when the countdown ends.
