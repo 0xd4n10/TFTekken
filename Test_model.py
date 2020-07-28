@@ -8,12 +8,15 @@ import curses
 import mss
 import random
 from pynput.keyboard import Key, Controller
-
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, Flatten#create model
+from tensorflow import keras 
 
 keyboard = Controller()
 
 t_time = 0.09
 
+# Functions to perform keypresses
 def jump():
     keyboard.press('w')
     time.sleep(0.1)
@@ -44,12 +47,9 @@ def hit():
     time.sleep(0.1)
     keyboard.release('u')
 
-import numpy as np
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, Flatten#create model
-import keras
 
-model = Sequential()#add model layers
+# Define model
+model = Sequential()
 model.add(Conv2D(64, kernel_size=3, activation='relu', input_shape=(120,120,1)))
 model.add(Conv2D(32, kernel_size=3, activation='relu'))
 model.add(Flatten())
@@ -59,30 +59,30 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 model.load_weights('weights.hdf5')
 
 def main():
+    # Countdown!
     last_time = time.time()
     for i in list(range(4))[::-1]:
         print(i+1)
         time.sleep(1)
-
-    paused = False
+        
     with mss.mss() as sct:
         while(True):
-            
             if not paused:
+                # Get frame and shape it
                 monitor = {"top": 40, "left": 0, "width": 800, "height": 700}
                 img = np.array(sct.grab(monitor))
                 screen = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 screen = cv2.resize(screen, (120,120))
                 screen = np.array([screen.reshape(120,120,1)])
+                # Make prediction on current frame
                 prediction = model.predict(screen.astype(np.float32))[0]
 
                 prediction[np.where(prediction==np.max(prediction))] = 1.0
-                print(prediction)
+                print(f"Prediction: {prediction}")
                 
-                
+                # Perform predicted action
                 if prediction[0] == 1.0:
                     backwards()
-
                 elif prediction[1] == 1.0:
                     jump()
                 elif prediction[2] == 1.0:
