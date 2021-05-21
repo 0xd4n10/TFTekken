@@ -1,4 +1,4 @@
-tensorflow==2.2
+tensorflow==2.5.0
 opencv==3.4.2
 numpy==1.18.5
 mss==6.0.0
